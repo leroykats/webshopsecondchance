@@ -8,20 +8,16 @@
 <body>
     <header>
         <div class="headerlogo">
-            <a href="index.html"><img alt="logo" src="images/logo.png" /></a>
+            <a href="index.html"><img alt="logo" src="images/logo.jpg" height="90" width="100"/></a>
         </div>
         <div class="headernav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="">Most hired cars</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.php">Login</a></li>
             </ul>
         </div>
     </header>
-    <div class="backgroundImage">
-        <h2>Bing's Cars</h2>
-        <p>For all your special cars</p>
-    </div>
     <main>
         <h1>Pick one of our popular cars!</h1>
         <hr>
