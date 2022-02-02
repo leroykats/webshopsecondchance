@@ -2,7 +2,7 @@
     $dbConn = "localhost";
     $dbUser = "root";
     $dbPassword = "";
-    $dbName = "secondchance";
+    $dbName = "";
     $conn = mysqli_connect($dbConn, $dbUser, $dbPassword, $dbName);
     if(!$conn)
     {
