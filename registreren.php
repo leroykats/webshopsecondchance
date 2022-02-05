@@ -2,18 +2,28 @@
 
 include_once("Config/config.php");
 
+
 if(isset($_POST["registeren"])){
     if(isset($_POST["wachtwoord"]) && $wachtwoord = filter_input(INPUT_POST, "wachtwoord", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
-        if(isset()$_POST["naam"]) && $naam = filter_input(INPUT_POST, "naam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
-            if(isset()$_POST["achternaam"]) && $achternaam = filter_input(INPUT_POST, "achternaam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
-                if(isset()$_POST["gdatum"]) && $gdatum = filter_input(INPUT_POST, "gdatum", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
+        if(isset($_POST["naam"]) && $naam = filter_input(INPUT_POST, "naam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
+            if(isset($_POST["achternaam"]) && $achternaam = filter_input(INPUT_POST, "achternaam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
+                if(isset($_POST["gdatum"]) && $gdatum = filter_input(INPUT_POST, "gdatum", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
                     if(isset($_POST["adres"]) && $adres = filter_input(INPUT_POST, "adres", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
                         if(isset($_POST["postcode"]) && $postcode = filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
-                            if(isset($_POST["email"]) && $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
-                                $hash_password = password_hash($wachtwoord, PASSWORD_DEFAULT);
+                             if(isset($_POST["plaats"]) && $plaats = filter_input(INPUT_POST, "plaats", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
+                                if(isset($_POST["email"]) && $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
+                                    $hash_password = password_hash($wachtwoord, PASSWORD_DEFAULT);
+
+                                    //add user 
+                                    $sql = "INSERT INTO users(passwordhash, Voornaam, Achternaam, Geboortedatum, Adres, Postcode, Plaats, Email, `Role`)
+                                    VALUES(?,?,?,?,?,?,?,?,1)";
+                                    $stmt = mysqli_prepare($conn, $sql) or die(mysqli_error($conn));
+                                        mysqli_stmt_bind_param($stmt, "ssssssss", $hash_password, $naam, $achternaam, $gdatum, $adres, $postcode, $plaats, $email);
+                                        mysqli_stmt_execute($stmt) or die(mysqli_error($conn));
+                                        mysqli_stmt_close($stmt);
+                                }        
                             }
                         }
-
                     }
                 }
 
@@ -59,6 +69,10 @@ if(isset($_POST["registeren"])){
     <label for"postcode">Postcode</label>
     <br>
     <input type="text" placeholder="Voer je postcode in" name="postcode" id="postcode" required>
+<br>
+    <label for"plaats">Plaats</label>
+    <br>
+    <input type="text" placeholder="Voer je wwonplaats in" name="plaats" id="plaats" required>
 <br>
     <label for"email">E-mail</label>
     <br>
