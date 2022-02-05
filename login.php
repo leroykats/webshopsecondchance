@@ -2,6 +2,12 @@
 session_start();
 include_once("Config/config.php");
 
+if(isset($_POST['inloggen'])){
+    if(isset($_POST['email']) && $email = filter_input(INPUT_POST, 'email', FILTER_DEAFULT)){
+
+    }
+}
+
 
 
 
