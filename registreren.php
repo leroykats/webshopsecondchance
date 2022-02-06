@@ -21,6 +21,8 @@ if(isset($_POST["registeren"])){
                                         mysqli_stmt_bind_param($stmt, "ssssssss", $hash_password, $naam, $achternaam, $gdatum, $adres, $postcode, $plaats, $email);
                                         mysqli_stmt_execute($stmt) or die(mysqli_error($conn));
                                         mysqli_stmt_close($stmt);
+                                        echo "Registreren gelukt!";
+                                        header("Location: login.php");
                                 }        
                             }
                         }

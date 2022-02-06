@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,8 @@
         <?php include "Pages/header.php"?>
     </header>
     <main>
-        <h1>Pick one of our popular cars!</h1>
+        <h1> Welkom <?php echo($_SESSION["naam"])?> </h1>
+        
         <hr>
         <div class="images">
             <div class="imgbox">
