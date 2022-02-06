@@ -45,11 +45,11 @@ if(isset($_POST['inloggen'])){
     <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
         <label for="login">Login</label>
         <br>
-        <input type="email" name="email" id="login" placeholder="Voer uw email adres in">
+        <input type="email" name="email" id="login" placeholder="Voer uw email adres in" required>
         <br><br>
         <label for="password">Wachtwoord</label>
         <br>
-        <input type="password" id-"password" name="password" placeholder="voer uw wachtwoord in">
+        <input type="password" id-"password" name="password" placeholder="voer uw wachtwoord in" required>
         <br><br>
         <button type="submit" name="inloggen" id="inloggen" value="inloggen">Inloggen</button>   
 
