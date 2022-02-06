@@ -23,15 +23,30 @@ if(isset($_POST["registeren"])){
                                         mysqli_stmt_close($stmt);
                                         echo "Registreren gelukt!";
                                         header("Location: login.php");
+                                } else{
+                                    echo "Voer uw e-mail adres in";
                                 }        
+                            } else{
+                                echo "Voer uw woonplaats in";
                             }
+                        } else{
+                            echo "voer uw postcode in";
                         }
+                    } else{
+                        echo "Voer uw adres in";
                     }
+                } else{
+                    echo "voer uw geboortedatum in";
                 }
-
+            } else{
+                echo "Voer uw achternaam in";
             }
+        } else{
+            echo "Voer uw voornam in";
         }
-    }   
+    } else{
+        echo "Voer een wachtwoord in";
+    }  
 }
 
 ?>
