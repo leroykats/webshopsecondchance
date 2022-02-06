@@ -21,9 +21,16 @@ if(isset($_POST['inloggen'])){
                         $_SESSION["gdatum"] = $geboortedatum;
                         header("Location: index.php");   
                 }       
+            } else{
+                echo "Geen account gevonden met de ingevulde gegevens";
+                echo "<br>";
+                echo "Voer de juiste gegevens in of <a href=\"registreren.php\"> maak een account aan </a>";
             }
+        } else{
+            echo "Voer uw wachtwoord in";
         }
-
+    } else{
+        echo "voer uw E-mail adres in";
     }
 }
 
