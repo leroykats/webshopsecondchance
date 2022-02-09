@@ -57,3 +57,36 @@
             return "Ongeldig telefoonnummer";
         }
     }
+
+function getOrderInformation($conn, $ID)
+{
+    $query = "SELECT * FROM `product` WHERE ProductID=?";
+    if ($statement = mysqli_prepare($conn, $query)) {
+        mysqli_stmt_bind_param($statement, 'i', $ID);
+        if (mysqli_stmt_execute($statement)) {
+            mysqli_stmt_bind_result($statement,
+                $id,
+                $desc,
+                $category,
+                $price,
+                $file,
+                $age);
+            if (mysqli_stmt_fetch($statement)) {
+                mysqli_stmt_close($statement);
+                return array(
+                    "ProductID" => $id,
+                    "Desc" => $desc,
+                    "Categorie" => $category,
+                    "Prijs" => $price,
+                    "File" => $file,
+                    "Leeftijd" => $age
+                );
+            }
+        } else {
+            die("EXECUTE ERROR");
+        }
+    } else {
+        die(mysqli_error($conn));
+    }
+    mysqli_stmt_close($statement);
+}

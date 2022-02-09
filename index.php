@@ -14,6 +14,16 @@ session_start();
         <h1> Welkom <?php echo($_SESSION["naam"])?> </h1>
         
         <hr>
+        <div class="categories">
+            <b>Please select one of the following categories: </b> <p></p>
+            <ul>
+                <a href="index.php">Phones</a> -
+                <a href="">Computers</a> -
+                <a href="">Components</a> -
+                <a href="">Smart Watches</a> -
+                <a href="">Smart Home</a>
+            </ul>
+        </div>
         <div class="images">
             <div class="imgbox">
                 <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
@@ -41,10 +51,6 @@ session_start();
             </div> 
         </div>
 
-        <h2>Who is Bing cars?</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus iaculis posuere nulla, quis ultrices quam sollicitudin ut. Maecenas ac arcu ullamcorper, aliquam dui vel, scelerisque turpis. Vivamus urna sem, rutrum sed arcu in, cursus dictum diam. Vestibulum bibendum vulputate magna et sagittis. Nullam nunc mauris, laoreet at eros id, maximus ullamcorper lectus. Nulla rhoncus quam eu tristique viverra. Cras risus dolor, pellentesque molestie dictum quis, blandit a augue. Cras pharetra massa ut nisi ullamcorper, ut cursus lorem dictum. Quisque vulputate orci malesuada massa porta sagittis. Aliquam sit amet dui quis ex vehicula placerat.</p>
-
-        
     </main>
     <footer>
         <p>2022 Bings Cars<br>
