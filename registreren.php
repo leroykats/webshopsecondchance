@@ -1,6 +1,7 @@
 <?php
 
 include_once("Config/config.php");
+include_once("Config/functions.php");
 
 
 if(isset($_POST["registeren"])){
@@ -14,6 +15,7 @@ if(isset($_POST["registeren"])){
                                 if(isset($_POST["email"]) && $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
                                     $hash_password = password_hash($wachtwoord, PASSWORD_DEFAULT);
 
+                                    if(!userExists($conn, $email)){
                                     //add user 
                                     $sql = "INSERT INTO users(passwordhash, Voornaam, Achternaam, Geboortedatum, Adres, Postcode, Plaats, Email, `Role`)
                                     VALUES(?,?,?,?,?,?,?,?,1)";
@@ -23,6 +25,9 @@ if(isset($_POST["registeren"])){
                                         mysqli_stmt_close($stmt);
                                         echo "Registreren gelukt!";
                                         header("Location: login.php");
+                                    } else{
+                                       echo "een account met dit e-mail adres bestaat al";
+                                    }    
                                 } else{
                                     echo "Voer uw e-mail adres in";
                                 }        
