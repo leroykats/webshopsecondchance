@@ -23,45 +23,63 @@
         <hr>
         <form action=<?php echo $_SERVER['PHP_SELF']?> method="post">
 
+            <label for="titel">Titel</label>
             <input type="text" name="titel">
-            <label for="product">Product *</label><br>
-
+            
+            <label for="omschrijving">Omschrijving</label>
             <input type="textarea" name="omschrijving">
-            <label for="version">Version *</label><br>
 
+            <label for="categorie">Categorie</label>
             <input type="text" name="categorie">
-            <label for="hardware">Hardware *</label><br>
-
-            <input type="text" name="prijs">
-            <label for="os">OS *</label><br>
-
+            
+            <label for="prijs">Prijs</label>
+            <input type="number" name="prijs">
+            
+            <label for="afbeelding">Afbeelding</label>
             <input type="text" name="afbeelding">
-            <label for="frequency">Frequency *</label><br>
-
-            <input type="text" name="leeftijd">
-            <label for="solution">Solution *</label><br>
+            
+            <label for="leeftijd">Leeftijd</label>
+            <input type="number" name="leeftijd">
+            
+            <input type="submit" name="submit" value="Product toevoegen">
         </form>
 
         <?php include_once "Config/config.php";
+            if(isset($_POST["submit"])){
+                $titel = $_POST["titel"];
+                $omschrijving = $_POST["omschrijving"];
+                $categorie = $_POST["categorie"];
+                $prijs = $_POST["prijs"];
+                $afbeelding = $_POST["afbeelding"];
+                $leeftijd = $_POST["leeftijd"];
+
+                $titel = filter_input(INPUT_POST,'titel', FILTER_SANITIZE_SPECIAL_CHARS);
+                $omschrijving = filter_input(INPUT_POST, 'omschrijving',FILTER_SANITIZE_SPECIAL_CHARS);
+                $categorie = filter_input(INPUT_POST,'categorie', FILTER_SANITIZE_SPECIAL_CHARS);
+                $prijs = filter_input(INPUT_POST, 'prijs', FILTER_SANITIZE_SPECIAL_CHARS);
+                $afbeelding = filter_input(INPUT_POST, 'afbeelding', FILTER_SANITIZE_SPECIAL_CHARS);
+                $leeftijd = filter_input(INPUT_POST, 'leeftijd', FILTER_SANITIZE_SPECIAL_CHARS);
+            
+
             $query = "INSERT INTO product (Titel, Omschrijving, Categorie, Prijs, Afbeelding, Leeftijd)
             VALUES (?, ?, ?, ?, ?, ?)";
-        
+
+            $stmt = mysqli_prepare($conn, $query);
+
+            mysqli_stmt_bind_param($stmt, "sssisi", $titel, $omschrijving, $categorie, $prijs, $afbeelding, $leeftijd);
+
+            if(mysqli_stmt_execute($stmt)){
+                echo "Product succesvol toegevoegt.";
+            }else{
+                echo "Niet gelukt om product toe te voegen.";
+            }
+            
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+            }
         ?>
 
         
     </main>
-    <footer>
-        <p>2022 Bings Cars<br>
-        <a href="">Send us a direct e-mail!</a>
-        </p>
-        <ul>
-            <li>Monday 13:00 - 18:00</li>
-            <li>Tuesday 9:00 - 18:00</li>
-            <li>Wednesday 9:00 - 18:00</li>
-            <li>Thursday 9:00 - 21:00</li>
-            <li>Friday 9:00 - 21:00</li>
-            <li>Saterday 9:00 - 17:00</li>
-        </ul>
-    </footer>
 </body>
 </html>
