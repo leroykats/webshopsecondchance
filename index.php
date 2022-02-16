@@ -1,5 +1,8 @@
 <?php
 session_start();
+include_once("Config/config.php");
+include_once("Config/functions.php");
+$producten = getProductInformation($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,45 +28,17 @@ session_start();
             </ul>
         </div>
         <div class="images">
+  
             <div class="imgbox">
-                <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
-            </div>
-            <div class="imgbox">
-                <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
-            </div>
-            <div class="imgbox">
-                <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
-            </div>
-            <div class="imgbox">
-                <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
-            </div>
-            <div class="imgbox">
-                <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
-            </div>
-            <div class="imgbox">
-                <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
-            </div>
-            <div class="imgbox">
-                <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
-            </div>
-            <div class="imgbox">
-                <img src="images/car 1.png" alt="auto"><h2>Hyonda</h2><p><strong>€ 120.000</strong><br>Beautiful car that can last<br>for years to come</p>
-            </div> 
-        </div>
+                <?php
+               echo "<img src='".$producten['File']."' alt='".$producten['Titel']."'><h2>".$producten['Desc']."</h2><p><strong>€ ".$producten['Prijs']."</strong></p>";
+                ?>
+               </div>
 
+      </div>
     </main>
     <footer>
-        <p>2022 Bings Cars<br>
-        <a href="">Send us a direct e-mail!</a>
-        </p>
-        <ul>
-            <li>Monday 13:00 - 18:00</li>
-            <li>Tuesday 9:00 - 18:00</li>
-            <li>Wednesday 9:00 - 18:00</li>
-            <li>Thursday 9:00 - 21:00</li>
-            <li>Friday 9:00 - 21:00</li>
-            <li>Saterday 9:00 - 17:00</li>
-        </ul>
+  
     </footer>
 </body>
 </html>

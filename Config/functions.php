@@ -90,3 +90,37 @@ function getOrderInformation($conn, $ID)
     }
     mysqli_stmt_close($statement);
 }
+
+function getProductInformation($conn)
+{
+    $query = "SELECT * FROM `product`";
+    if ($statement = mysqli_prepare($conn, $query)) {
+        if (mysqli_stmt_execute($statement)) {
+            mysqli_stmt_bind_result($statement,
+                $id,
+                $title,
+                $desc,
+                $category,
+                $price,
+                $file,
+                $age);
+            if (mysqli_stmt_fetch($statement)) {
+                mysqli_stmt_close($statement);
+                return array(
+                    "ProductID" => $id,
+                    "Titel" => $title,
+                    "Desc" => $desc,
+                    "Categorie" => $category,
+                    "Prijs" => $price,
+                    "File" => $file,
+                    "Leeftijd" => $age
+                );
+            }
+        } else {
+            die("EXECUTE ERROR");
+        }
+    } else {
+        die(mysqli_error($conn));
+    }
+    mysqli_stmt_close($statement);
+}

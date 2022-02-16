@@ -20,10 +20,15 @@ if(isset($_POST['inloggen'])){
                         $_SESSION["naam"] = $naam;
                         $_SESSION["gdatum"] = $geboortedatum;
 
-                        if ($_SESSION["accountType"] = "3"){
-                        header("Location: index.php");  
-                }       } elseif($_SESSION["accountType"] = "1"){
+                        if ($_SESSION["accountType"] == "0"){
+                        header("Location: index.php"); 
+                        die; 
+                }       } elseif($_SESSION["accountType"] == "1"){
                         header("Location: order.php");
+                        die;
+                        } else{
+                            header("Location: index.php");
+                            die;
                         }
             } else{
                 echo "Geen account gevonden met de ingevulde gegevens";
