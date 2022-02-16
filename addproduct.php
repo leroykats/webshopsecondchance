@@ -30,13 +30,19 @@
             <input type="textarea" name="omschrijving">
 
             <label for="categorie">Categorie</label>
-            <input type="text" name="categorie">
+            <select name="categorie" id="categorie">
+                <option value="phones">Phones</option>
+                <option value="computers">Computers</option>
+                <option value="components">Components</option>
+                <option value="smartwatches">Smartwatches</option>
+                <option value="smarthome">Smarthome</option>
+            </select>
             
             <label for="prijs">Prijs</label>
             <input type="number" name="prijs">
             
             <label for="afbeelding">Afbeelding</label>
-            <input type="text" name="afbeelding">
+            <input type="file" name="afbeelding">
             
             <label for="leeftijd">Leeftijd</label>
             <input type="number" name="leeftijd">
@@ -60,22 +66,48 @@
                 $afbeelding = filter_input(INPUT_POST, 'afbeelding', FILTER_SANITIZE_SPECIAL_CHARS);
                 $leeftijd = filter_input(INPUT_POST, 'leeftijd', FILTER_SANITIZE_SPECIAL_CHARS);
             
+            if(!empty($titel)){
+                if(!empty($omschrijving)){
+                    if(!empty($categorie)){
+                        if(!empty($prijs)){
+                            if(!empty($afbeelding)){
+                                if(!empty($leeftijd)){
 
-            $query = "INSERT INTO product (Titel, Omschrijving, Categorie, Prijs, Afbeelding, Leeftijd)
-            VALUES (?, ?, ?, ?, ?, ?)";
+                                    $query = "INSERT INTO product (Titel, Omschrijving, Categorie, Prijs, Afbeelding, Leeftijd)
+                                    VALUES (?, ?, ?, ?, ?, ?)";
 
-            $stmt = mysqli_prepare($conn, $query);
+                                    $stmt = mysqli_prepare($conn, $query);
 
-            mysqli_stmt_bind_param($stmt, "sssisi", $titel, $omschrijving, $categorie, $prijs, $afbeelding, $leeftijd);
+                                    mysqli_stmt_bind_param($stmt, "sssisi", $titel, $omschrijving, $categorie, $prijs, $afbeelding, $leeftijd);
 
-            if(mysqli_stmt_execute($stmt)){
-                echo "Product succesvol toegevoegt.";
+                                    if(mysqli_stmt_execute($stmt)){
+                                        echo "Product succesvol toegevoegt.";
+                                    }else{
+                                        echo "Niet gelukt om product toe te voegen.";
+                                    }
+                                    
+                                    mysqli_stmt_close($stmt);
+                                    mysqli_close($conn);
+                                }else{
+                                    echo "Leeftijd vergeten!";
+                                }
+                            }else{
+                                echo "Afbeelding vergeten!";
+                            }
+                        }else{
+                            echo "Prijs vergeten!";
+                        }
+                    }else{
+                        echo "Categorie vergeten!";
+                    }
+                }else{
+                    echo "Omschrijving vergeten!";
+                }
             }else{
-                echo "Niet gelukt om product toe te voegen.";
+                echo "Titel vergeten!";
             }
+
             
-            mysqli_stmt_close($stmt);
-            mysqli_close($conn);
             }
         ?>
 
