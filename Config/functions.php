@@ -96,31 +96,11 @@ function getProductInformation($conn)
     $query = "SELECT * FROM `product`";
     if ($statement = mysqli_prepare($conn, $query)) {
         if (mysqli_stmt_execute($statement)) {
-            mysqli_stmt_bind_result($statement,
-                $id,
-                $title,
-                $desc,
-                $category,
-                $price,
-                $file,
-                $age);
-            if (mysqli_stmt_fetch($statement)) {
+                $res = mysqli_stmt_get_result($statement);
+                $result = mysqli_fetch_all($res, MYSQLI_ASSOC);
                 mysqli_stmt_close($statement);
-                return array(
-                    "ProductID" => $id,
-                    "Titel" => $title,
-                    "Desc" => $desc,
-                    "Categorie" => $category,
-                    "Prijs" => $price,
-                    "File" => $file,
-                    "Leeftijd" => $age
-                );
-            }
-        } else {
-            die("EXECUTE ERROR");
+                return $result;
         }
-    } else {
-        die(mysqli_error($conn));
-    }
+    }   
     mysqli_stmt_close($statement);
 }

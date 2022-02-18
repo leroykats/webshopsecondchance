@@ -28,12 +28,14 @@ $producten = getProductInformation($conn);
             </ul>
         </div>
         <div class="images">
-  
-            <div class="imgbox">
                 <?php
-               echo "<img src='".$producten['File']."' alt='".$producten['Titel']."'><h2>".$producten['Desc']."</h2><p><strong>€ ".$producten['Prijs']."</strong></p>";
+                foreach($producten as $product){
+                    echo "<div class='imgbox'>";
+                     echo "<img src='".$product['File']."' alt='".$product['Titel']."'><h2>".$product['Omschrijving']."</h2><p><strong>€ ".$product['Prijs']."</strong></p>";
+                     echo "</div>";
+                }
                 ?>
-               </div>
+              
 
       </div>
     </main>
