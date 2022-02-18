@@ -100,7 +100,11 @@ function getProductInformation($conn)
                 $result = mysqli_fetch_all($res, MYSQLI_ASSOC);
                 mysqli_stmt_close($statement);
                 return $result;
+        } else{
+            die(mysqli_error($conn));
         }
-    }   
+    } else{
+        die(mysqli_error($conn));
+    }  
     mysqli_stmt_close($statement);
 }
