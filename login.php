@@ -29,15 +29,17 @@ if(isset($_POST['inloggen'])){
                             header("Location: index.php");
                         }
             } else{
-                echo "Geen account gevonden met de ingevulde gegevens";
+                echo "Uw gebruikersnaam of wachtwoord is incorrect";
                 echo "<br>";
                 echo "Voer de juiste gegevens in of <a href=\"registreren.php\"> maak een account aan </a>";
             }
         } else{
-            echo "Voer uw wachtwoord in";
+            echo "Geen account gevonden met dit e-mail adres";
+            echo "<br>";
+            echo "Voer uw juiste e-mail in of <a href=\"registreren.php\"> maak een account aan </a>";
         }
     } else{
-        echo "voer uw E-mail adres in";
+        echo "Voer uw e-mail adres in";
     }
 }
 }
