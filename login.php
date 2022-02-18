@@ -22,13 +22,11 @@ if(isset($_POST['inloggen'])){
 
                         if ($_SESSION["accountType"] == "0"){
                         header("Location: index.php"); 
-                        die; 
-                }       } elseif($_SESSION["accountType"] == "1"){
+                        } elseif($_SESSION["accountType"] == "1"){
                         header("Location: order.php");
-                        die;
-                        } else{
+                        
+                        } elseif($_SESSION["accountType"] == "2"){
                             header("Location: index.php");
-                            die;
                         }
             } else{
                 echo "Geen account gevonden met de ingevulde gegevens";
@@ -41,6 +39,7 @@ if(isset($_POST['inloggen'])){
     } else{
         echo "voer uw E-mail adres in";
     }
+}
 }
 
 
