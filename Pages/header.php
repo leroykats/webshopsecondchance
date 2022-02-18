@@ -5,7 +5,7 @@
     <?php
     if(isset($_SESSION['accountType'])){
     echo "<ul>";
-       echo '<li><a href="">uitloggen</a></li>';
+       echo '<li><a href="logout.php">Uitloggen</a></li>';
     echo "</ul>";
     } else{
         echo "<ul>";
