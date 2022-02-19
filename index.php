@@ -31,7 +31,7 @@ $producten = getProductInformation($conn);
                 <?php
                 foreach($producten as $product){
                     echo "<div class='imgbox'>";
-                     echo "<a href=\"Pages/product.php?id=$product[ProductID]\"><img src='".$product['Afbeelding']."' alt='".$product['Titel']."'><h2>".$product['Titel']."</h2><p><strong>€ ".$product['Prijs']."</strong></p></a>";
+                     echo "<a href=\"product.php?id=$product[ProductID]\"><img src='".$product['Afbeelding']."' alt='".$product['Titel']."'><h2>".$product['Titel']."</h2><p><strong>€ ".$product['Prijs']."</strong></p></a>";
                      echo "</div>";
                 }
                 ?>

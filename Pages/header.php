@@ -5,10 +5,12 @@
     <?php
     if(isset($_SESSION['accountType'])){
     echo "<ul>";
+       echo '<li><a href="winkelmandje.php">Winkelmandje</a></li>';
        echo '<li><a href="logout.php">Uitloggen</a></li>';
     echo "</ul>";
     } else{
         echo "<ul>";
+        echo '<li><a href="winkelmandje.php">Winkelmandje</a></li>';
          echo '<li><a href="login.php">Login</a></li>';
         echo "</ul>";
     }
