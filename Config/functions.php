@@ -110,3 +110,22 @@ function getProductInformation($conn)
     }  
     mysqli_stmt_close($statement);
 }
+
+function getCartProductInformation($conn, $ID)
+{
+    $query = "SELECT * FROM `product` where ProductId=?";
+    if ($statement = mysqli_prepare($conn, $query)) {
+        mysqli_stmt_bind_param($statement, 'i', $ID);
+        if (mysqli_stmt_execute($statement)) {
+                $res = mysqli_stmt_get_result($statement);
+                $result = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                mysqli_stmt_close($statement);
+                return $result;
+        } else{
+            die(mysqli_error($conn));
+        }
+    } else{
+        die(mysqli_error($conn));
+    }  
+    mysqli_stmt_close($statement);
+}

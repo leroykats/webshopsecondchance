@@ -16,11 +16,21 @@ include_once ("Config/functions.php");
 <main>
     <?php
     $inhoud = $_SESSION['mandje'];
-    var_dump($inhoud);
-    /*foreach ($inhoud as $p){
-       getOrderInformation($conn, $p);
-        echo $p;
-    } */
+
+    
+    //var_dump($inhoud);
+    foreach ($inhoud as $p){
+       // echo $p;
+        $id = intval($p);
+       $items =  getCartProductInformation($conn, $id);
+       foreach($items as $item)
+       //print_r ($item);
+        echo $item['Titel']. "  ___________________________________  " . $item['Prijs'];
+        echo "<br>";
+        };
+
+        
+    
         
     ?>
 
