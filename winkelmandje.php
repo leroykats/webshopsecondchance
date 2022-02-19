@@ -1,12 +1,31 @@
+<?php
+session_start();
+include_once ("Config/config.php");
+include_once ("Config/functions.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <?php include "Pages/head.php"?>
 </head>
 <body>
-    
+    <header>
+        <?php include "Pages/header.php"?>
+    </header>
+<main>
+    <?php
+    $inhoud = $_SESSION['mandje'];
+    foreach ($inhoud as $p){
+        echo $p;
+        echo "<br>";
+    }
+    ?>
+
+
+</main>
+<footer>
+
+</footer>
 </body>
 </html>
