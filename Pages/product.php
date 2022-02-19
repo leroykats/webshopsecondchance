@@ -1,8 +1,8 @@
 <?php
-include_once "Config/config.php";
-include "Config/functions.php";
-
-$ticket = getOrderInformation($conn, $_GET['id']);
+include_once ("Config/config.php");
+include_once ("Config/functions.php");
+$num = $_GET['id'];
+$ticket = getOrderInformation($conn, $num);
 
 
 ?>
@@ -17,6 +17,9 @@ $ticket = getOrderInformation($conn, $_GET['id']);
     <?php include "Pages/header.php"?>
 </header>
 <main>
+    <?php
+    echo $ticket['Desc'];
+    ?>
 
 </main>
 <footer>
