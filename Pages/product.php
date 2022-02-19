@@ -1,6 +1,6 @@
 <?php
-include_once ("Config/config.php");
-include_once ("Config/functions.php");
+include_once ("/Users/sarahvogelzang/Sites/localhost/webshopsecondchance/Config/config.php");
+include_once ("/Users/sarahvogelzang/Sites/localhost/webshopsecondchance/Config/functions.php");
 $num = $_GET['id'];
 $ticket = getOrderInformation($conn, $num);
 
@@ -10,15 +10,28 @@ $ticket = getOrderInformation($conn, $num);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include "Pages/head.php"?>
+    <?php include "head.php"?>
 </head>
 <body>
 <header>
-    <?php include "Pages/header.php"?>
+    <?php include "header.php"?>
 </header>
 <main>
     <?php
-    echo $ticket['Desc'];
+         echo $ticket["ProductID"];
+         echo "<br>";
+         echo $ticket["Titel"];
+         echo "<br>";
+         echo $ticket["Desc"];
+         echo "<br>";
+         echo $ticket["Categorie"];
+         echo "<br>";
+         echo $ticket["Prijs"];
+         echo "<br>";
+         echo $ticket["File"];
+  
+         echo $ticket["Leeftijd"];
+
     ?>
 
 </main>
