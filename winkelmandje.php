@@ -16,10 +16,12 @@ include_once ("Config/functions.php");
 <main>
     <?php
     $inhoud = $_SESSION['mandje'];
-    foreach ($inhoud as $p){
+    var_dump($inhoud);
+    /*foreach ($inhoud as $p){
+       getOrderInformation($conn, $p);
         echo $p;
-        echo "<br>";
-    }
+    } */
+        
     ?>
 
 

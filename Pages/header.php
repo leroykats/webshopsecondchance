@@ -10,7 +10,6 @@
     echo "</ul>";
     } else{
         echo "<ul>";
-        echo '<li><a href="winkelmandje.php">Winkelmandje</a></li>';
          echo '<li><a href="login.php">Login</a></li>';
         echo "</ul>";
     }

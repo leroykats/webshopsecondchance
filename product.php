@@ -1,15 +1,14 @@
 <?php
 session_start();
-
 include_once ("Config/config.php");
 include_once ("Config/functions.php");
 $num = $_GET['id'];
 $ticket = getOrderInformation($conn, $num);
 
 if(isset($_POST["AddToCart"])){
-    array_push($_SESSION['mandje'], $ticket["Titel"]);
+    array_push($_SESSION['mandje'], $num);
     echo "toevoegen gelukt";
-    //var_dump($_SESSION['mandje']);
+    var_dump($_SESSION['mandje']);
 
 }
 
@@ -35,11 +34,15 @@ if(isset($_POST["AddToCart"])){
          echo "<h3> &euro; ".$ticket["Prijs"]."</h3>";
          echo "<br>";
          echo $ticket["File"];
-    ?>
-    <form method="post">
-        <input type="submit" name="AddToCart" value="Toevoegen aan winkelwagen">
-    </form>
-
+    
+    if(isset($_SESSION["accountType"])){
+    echo '<form method="post">';
+       echo '<input type="submit" name="AddToCart" value="Toevoegen aan winkelwagen">';
+    echo "</form>";
+    } else{
+        echo "Login om te bestellen!";
+    }
+?>
 </main>
 <footer>
 
