@@ -2,6 +2,10 @@
 session_start();
 include_once ("Config/config.php");
 include_once ("Config/functions.php");
+
+if(isset($_POST['verwijder'])){
+    unset($item);
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +29,10 @@ include_once ("Config/functions.php");
        $items =  getCartProductInformation($conn, $id);
        foreach($items as $item)
        //print_r ($item);
-        echo $item['Titel']. "  ___________________________________  " . $item['Prijs'];
+        echo"<form method='post'>";
+        echo $item['Titel']. "  ----------------------------- &euro;" . $item['Prijs']; 
+        echo "<input type='submit' id='verwijder' name='verwijder' value='Verwijder'>";
+        echo "</form>";
         echo "<br>";
         };
 

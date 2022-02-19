@@ -8,7 +8,7 @@ $ticket = getOrderInformation($conn, $num);
 if(isset($_POST["AddToCart"])){
     array_push($_SESSION['mandje'], $num);
     echo "toevoegen gelukt";
-    var_dump($_SESSION['mandje']);
+    //var_dump($_SESSION['mandje']);
 
 }
 
