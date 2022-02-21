@@ -3,7 +3,7 @@
 </div>
 <div class="headernav">
     <?php
-    if(isset($_SESSION['accountType'])){
+    if($_SESSION["loggedIn"]){
     echo "<ul>";
        echo '<li><a href="winkelmandje.php">Winkelmandje</a></li>';
        echo '<li><a href="logout.php">Uitloggen</a></li>';
