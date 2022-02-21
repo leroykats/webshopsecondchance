@@ -40,15 +40,15 @@ $userAge = getUserAge($_SESSION["gdatum"]);
 
       
     
-    if(isset($_SESSION["accountType"]) && $ticket['Leeftijd'] < 18){
+    if($_SESSION["loggedIn"] && $ticket['Leeftijd'] < 18){
     echo '<form method="post">';
        echo '<input type="submit" name="AddToCart" value="Toevoegen aan winkelwagen">';
     echo "</form>";
-    } elseif(isset($_SESSION["accountType"]) && $ticket['Leeftijd'] >= 18 && $userAge >= 18){
+    } elseif($_SESSION["loggedIn"] && $ticket['Leeftijd'] >= 18 && $userAge >= 18){
         echo '<form method="post">';
         echo '<input type="submit" name="AddToCart" value="Toevoegen aan winkelwagen">';
         echo "</form>";
-    } elseif(isset($_SESSION["accountType"]) && $ticket['Leeftijd'] >= 18 && $userAge <= 17){
+    } elseif($_SESSION["loggedIn"] && $ticket['Leeftijd'] >= 18 && $userAge <= 17){
         echo "Dit product is voor 18 jaar en ouder";
     } else{
         echo "Login om te bestellen!";
