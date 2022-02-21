@@ -129,3 +129,10 @@ function getCartProductInformation($conn, $ID)
     }  
     mysqli_stmt_close($statement);
 }
+
+function getUserAge($gdatum)
+{
+    $currentDate = date("Y-m-d");
+    $age = date_diff(date_create($gdatum), date_create($currentDate));
+    return $age->format("%y");
+}

@@ -9,8 +9,10 @@ if(isset($_POST["AddToCart"])){
     array_push($_SESSION['mandje'], $num);
     echo "toevoegen gelukt";
     //var_dump($_SESSION['mandje']);
-
 }
+
+$userAge = getUserAge($_SESSION["gdatum"]);
+
 
 ?>
 
@@ -34,14 +36,25 @@ if(isset($_POST["AddToCart"])){
          echo "<h3> &euro; ".$ticket["Prijs"]."</h3>";
          echo "<br>";
          echo $ticket["File"];
+
+
+      
     
-    if(isset($_SESSION["accountType"])){
+    if(isset($_SESSION["accountType"]) && $ticket['Leeftijd'] < 18){
     echo '<form method="post">';
        echo '<input type="submit" name="AddToCart" value="Toevoegen aan winkelwagen">';
     echo "</form>";
+    } elseif(isset($_SESSION["accountType"]) && $ticket['Leeftijd'] >= 18 && $userAge >= 18){
+        echo '<form method="post">';
+        echo '<input type="submit" name="AddToCart" value="Toevoegen aan winkelwagen">';
+        echo "</form>";
+    } elseif(isset($_SESSION["accountType"]) && $ticket['Leeftijd'] >= 18 && $userAge <= 17){
+        echo "Dit product is voor 18 jaar en ouder";
     } else{
         echo "Login om te bestellen!";
     }
+    
+    
 ?>
 </main>
 <footer>
