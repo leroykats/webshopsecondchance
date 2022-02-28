@@ -35,8 +35,7 @@ $userAge = getUserAge($_SESSION["gdatum"]);
          echo "<br>";
          echo "<h3> &euro; ".$ticket["Prijs"]."</h3>";
          echo "<br>";
-         echo $ticket["File"];
-
+         echo "<img src=".$ticket['File']." alt=".$ticket['Titel']."";
 
       
     
