@@ -12,7 +12,7 @@
         </div>
         <div class="headernav">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="">Most hired cars</a></li>
                 <li><a href="login.php">Login</a></li>
             </ul>
@@ -21,7 +21,7 @@
     <main>
         <h1>Voeg producten toe</h1>
         <hr>
-        <form action=<?php echo $_SERVER['PHP_SELF']?> method="post">
+        <form action=<?php echo $_SERVER['PHP_SELF']?> method="post" enctype="multipart/form-data">
 
             <label for="titel">Titel</label>
             <input type="text" name="titel">
@@ -56,35 +56,53 @@
                 $omschrijving = $_POST["omschrijving"];
                 $categorie = $_POST["categorie"];
                 $prijs = $_POST["prijs"];
-                $afbeelding = $_POST["afbeelding"];
                 $leeftijd = $_POST["leeftijd"];
 
                 $titel = filter_input(INPUT_POST,'titel', FILTER_SANITIZE_SPECIAL_CHARS);
                 $omschrijving = filter_input(INPUT_POST, 'omschrijving',FILTER_SANITIZE_SPECIAL_CHARS);
                 $categorie = filter_input(INPUT_POST,'categorie', FILTER_SANITIZE_SPECIAL_CHARS);
                 $prijs = filter_input(INPUT_POST, 'prijs', FILTER_SANITIZE_SPECIAL_CHARS);
-                $afbeelding = filter_input(INPUT_POST, 'afbeelding', FILTER_SANITIZE_SPECIAL_CHARS);
                 $leeftijd = filter_input(INPUT_POST, 'leeftijd', FILTER_SANITIZE_SPECIAL_CHARS);
             
             if(!empty($titel)){
                 if(!empty($omschrijving)){
                     if(!empty($categorie)){
                         if(!empty($prijs)){
-                            if(!empty($afbeelding)){
-                                if(!empty($leeftijd)){
+                            if(!empty($leeftijd)){
+                                if($_FILES["afbeelding"]["size"] <= 3000000000){
+                                
+                                    $acceptAfbeelding = ["image/jpg", "image/jpeg", "image/png"];
+                                    $afbeeldingInfo = finfo_open(FILEINFO_MIME_TYPE);
+                                    $afbeeldingType = finfo_file($afbeeldingInfo, $_FILES["afbeelding"]["tmp_name"]);
 
-                                    $query = "INSERT INTO product (Titel, Omschrijving, Categorie, Prijs, Afbeelding, Leeftijd)
-                                    VALUES (?, ?, ?, ?, ?, ?)";
+                                    if(in_array($afbeeldingType, $acceptAfbeelding)){
+                                        $path = "images/" . $_FILES["afbeelding"]["name"];
 
-                                    $stmt = mysqli_prepare($conn, $query);
+                                        $query = "INSERT INTO product (Titel, Omschrijving, Categorie, Prijs, Afbeelding, Leeftijd)
+                                        VALUES (?, ?, ?, ?, ?, ?)";
 
-                                    mysqli_stmt_bind_param($stmt, "sssisi", $titel, $omschrijving, $categorie, $prijs, $afbeelding, $leeftijd);
+                                        if($stmt = mysqli_prepare($conn, $query)){
+                                            mysqli_stmt_bind_param($stmt, "sssisi", $titel, $omschrijving, $categorie, $prijs, $path, $leeftijd);
 
-                                    if(mysqli_stmt_execute($stmt)){
-                                        echo "Product succesvol toegevoegt.";
-                                    }else{
-                                        echo "Niet gelukt om product toe te voegen.";
+                                            if(mysqli_stmt_execute($stmt)){
+                                                echo "Product succesvol toegevoegt.";
+                                                if(move_uploaded_file($_FILES["afbeelding"]["tmp_name"], "images/" . $_FILES["afbeelding"]["name"])){
+                                                    echo "Uploaden afbeelding gelukt";
+                                                }else{
+                                                    echo "Uploaden afbeelding niet gelukt";
+                                                }
+                                            }else{
+                                                echo "Niet gelukt om product toe te voegen.";
+                                            }
+
+                                        }else{
+                                            echo "Binden niet gelukt!";
+                                        }
+
+                                        
                                     }
+
+                                    
                                     
                                     mysqli_stmt_close($stmt);
                                     mysqli_close($conn);
