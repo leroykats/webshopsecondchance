@@ -19,7 +19,7 @@ if(isset($_POST['inloggen'])){
                         $_SESSION["accountType"] = $role;
                         $_SESSION["naam"] = $naam;
                         $_SESSION["gdatum"] = $geboortedatum;
-                        $_SESSION['mandje'] = array();
+
 
                         if ($_SESSION["accountType"] == "0"){
                         header("Location: index.php"); 
