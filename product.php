@@ -6,12 +6,10 @@ $num = $_GET['id'];
 $ticket = getOrderInformation($conn, $num);
 
 if(isset($_POST["AddToCart"])){
-    array_push($_COOCKIE['mandje'], $num);
+    array_push($_SESSION["mandje"], $num);
     echo "toevoegen gelukt";
   
 }
-
-var_dump($_COOCKIE['mandje']);
 
 $userAge = getUserAge($_SESSION["gdatum"]);
 
@@ -37,7 +35,10 @@ $userAge = getUserAge($_SESSION["gdatum"]);
          echo "<br>";
          echo "<h3> &euro; ".$ticket["Prijs"]."</h3>";
          echo "<br>";
-        // echo "<img src=".$ticket['File']." alt=".$ticket['Titel']."";
+         echo "<img src='" . $ticket["File"] . "'>";
+         echo "<br>";
+         echo "<br>";
+        
 
       
     
