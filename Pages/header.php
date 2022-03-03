@@ -11,6 +11,7 @@
     }
     elseif($_SESSION["loggedIn"] && $_SESSION["accountType"] == 0){
         echo '<li><a href="addproduct.php">Add product</a></li>';
+        echo '<li><a href="accounts.php">Beheer accounts</a></li>';
         echo '<li><a href="logout.php">Uitloggen</a></li>';
     }elseif($_SESSION["loggedIn"] && $_SESSION["accountType"] == 1){
         echo '<li><a href="order.php">orders</a></li>';
