@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 04, 2022 at 03:44 PM
+-- Generation Time: Mar 04, 2022 at 03:53 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -90,7 +90,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`UserID`, `PasswordHash`, `Voornaam`, `Achternaam`, `Geboortedatum`, `Adres`, `Postcode`, `Plaats`, `Email`, `Role`) VALUES
 (3, '$2y$10$c8IRzsIAgVTCletkFRYB0uKjL4Vg0pbblDNDmcWjYPn/.2wJU5oHq', 'G1', 'G1', '2000-01-05', 'Ergensstraat 45', '6754RT', 'Ergens', 'g1@test.nl', '3'),
-(5, '$2y$10$glQuW5AK.ixnU2UxzMs9GuyxFa8fsHoIDSMol8Cj6U4YYH58nzzca', 'admin', 'admin', '1994-02-10', 'Ergensstraat 45', '5674RT', 'Emmen', 'admin@test.nl', '0');
+(5, '$2y$10$glQuW5AK.ixnU2UxzMs9GuyxFa8fsHoIDSMol8Cj6U4YYH58nzzca', 'admin', 'admin', '1994-02-10', 'Ergensstraat 45', '5674RT', 'Emmen', 'admin@test.nl', '1');
 
 --
 -- Indexes for dumped tables
