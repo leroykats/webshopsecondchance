@@ -13,7 +13,6 @@ if(isset($_POST["AddToCart"])){
 
 $userAge = getUserAge($_SESSION["gdatum"]);
 
-
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +37,7 @@ $userAge = getUserAge($_SESSION["gdatum"]);
          echo "<img src='" . $ticket["File"] . "'>";
          echo "<br>";
          echo "<br>";
-        
 
-      
-    
     if($_SESSION["loggedIn"] && $ticket['Leeftijd'] < 18){
     echo '<form method="post">';
        echo '<input type="submit" name="AddToCart" value="Toevoegen aan winkelwagen">';

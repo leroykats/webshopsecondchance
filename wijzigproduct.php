@@ -24,6 +24,7 @@ if(!empty($titel)){
         if(!empty($categorie)){
             if(!empty($prijs)){
                 if(!empty($leeftijd)){
+                    if(!empty($_FILES)){
                     if($_FILES["afbeelding"]["size"] <= 3000000000){
                     
                         $acceptAfbeelding = ["image/jpg", "image/jpeg", "image/png"];
@@ -68,6 +69,9 @@ if(!empty($titel)){
                     }else{
                         echo "Leeftijd vergeten!";
                     }
+                } else{
+                    echo "Selecteer een afbeelding";
+                }
                 }else{
                     echo "Afbeelding vergeten!";
                 }
@@ -89,6 +93,24 @@ if(!empty($titel)){
 $nummer = $_GET['num'];
 $items = getCartProductInformation($conn, $nummer);
 
+if(isset($_POST['verwijder'])){
+    $num = $_POST["id"];
+
+    $query = "DELETE FROM product WHERE ProductID = ?";
+    if($stmt = mysqli_prepare($conn, $query)){
+        mysqli_stmt_bind_param($stmt, "i", $num);
+        if(mysqli_stmt_execute($stmt)){
+            echo "Product succesvol verwijderd";
+            header("Location: index.php");
+                mysqli_stmt_close($stmt);
+                mysqli_close($conn);
+        } else{
+            echo "Kan product niet verwijderen, probeer het later opnieuw";
+        }       
+    } else{
+        echo "Het systeem kan niet deze opdracht niet voorbereiden";
+    }
+} 
 
 ?>
 <!DOCTYPE html>
@@ -137,6 +159,7 @@ $items = getCartProductInformation($conn, $nummer);
             <input type="number" name="leeftijd" value="<?=$product["Leeftijd"]?>" id="leeftijd"> 
             
             <input type="submit" name="submit" value="Product wijzigen">
+            <input type="submit" name="verwijder" value="verwijder">
         </form>
 
 
