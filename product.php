@@ -55,7 +55,11 @@ $userAge = getUserAge($_SESSION["gdatum"]);
     } else{
         echo "Login om te bestellen!";
     }
+    echo "<br>";
     
+    if($_SESSION["accountType"] == 0){
+        echo "<a href=\"wijzigproduct.php?num=$num\">Wijzig product</a>";
+    }
     
 ?>
 </main>

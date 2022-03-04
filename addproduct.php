@@ -125,5 +125,7 @@ session_start();
 
         
     </main>
+<footer>
+</footer>  
 </body>
 </html>

@@ -10,7 +10,7 @@ if(isset($_POST["submit"])){
         $role =  0;
     } elseif($_POST["acc_type"] == "picker"){
         $role = 1;
-    }
+    } 
     if(isset($_POST["wachtwoord"]) && $wachtwoord = filter_input(INPUT_POST, "wachtwoord", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
         if(isset($_POST["naam"]) && $naam = filter_input(INPUT_POST, "naam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
             if(isset($_POST["achternaam"]) && $achternaam = filter_input(INPUT_POST, "achternaam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
@@ -57,6 +57,7 @@ if(isset($_POST["submit"])){
     } else{
         echo "Voer een wachtwoord in";
     }  
+
 }
 
 ?>
@@ -77,7 +78,7 @@ if(isset($_POST["submit"])){
 
 
     <label for="admin_acc"> Admin </label>
-    <input type="radio" id="admin_acc" name="acc_type" value="Admin" >
+    <input type="radio" id="admin_acc" name="acc_type" value="Admin" checked >
     <label for="order_acc"> Order Picker </label>
     <input type="radio" id="order_acc" name="acc_type" value="picker">
 
@@ -119,5 +120,7 @@ if(isset($_POST["submit"])){
 </form> 
 
 <main>
+<footer>
+</footer>    
 </body>
 </html>
