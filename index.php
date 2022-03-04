@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_destroy();
 include_once("Config/config.php");
 include_once("Config/functions.php");
 $producten = getProductInformation($conn);

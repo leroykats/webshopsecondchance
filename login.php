@@ -22,12 +22,12 @@ if(isset($_POST['inloggen'])){
                         $_SESSION["mandje"] = array();
 
 
-                        if ($_SESSION["accountType"] == "0"){
+                        if ($_SESSION["accountType"] == "1"){
                         header("Location: index.php"); 
-                        } elseif($_SESSION["accountType"] == "1"){
+                        } elseif($_SESSION["accountType"] == "2"){
                         header("Location: order.php");
                         
-                        } elseif($_SESSION["accountType"] == "2"){
+                        } elseif($_SESSION["accountType"] == "3"){
                             header("Location: index.php");
                         }
             } else{

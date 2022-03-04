@@ -4,7 +4,8 @@ include_once("Config/config.php");
 include_once("Config/functions.php");
 
 
-if(isset($_POST["registeren"])){
+if(isset($_POST["submit"])){
+    echo "halllooo";
     if(isset($_POST["wachtwoord"]) && $wachtwoord = filter_input(INPUT_POST, "wachtwoord", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
         if(isset($_POST["naam"]) && $naam = filter_input(INPUT_POST, "naam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
             if(isset($_POST["achternaam"]) && $achternaam = filter_input(INPUT_POST, "achternaam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
@@ -17,7 +18,7 @@ if(isset($_POST["registeren"])){
                                     if(!userExists($conn, $email)){
                                     //add user 
                                     $sql = "INSERT INTO users(passwordhash, Voornaam, Achternaam, Geboortedatum, Adres, Postcode, Plaats, Email, `Role`)
-                                    VALUES(?,?,?,?,?,?,?,?,2)";
+                                    VALUES(?,?,?,?,?,?,?,?,3)";
                                     $stmt = mysqli_prepare($conn, $sql) or die(mysqli_error($conn));
                                         mysqli_stmt_bind_param($stmt, "ssssssss", $hash_password, $naam, $achternaam, $gdatum, $adres, $postcode, $plaats, $email);
                                         mysqli_stmt_execute($stmt) or die(mysqli_error($conn));
