@@ -34,21 +34,21 @@ if(!empty($titel)){
                             $path = "images/" . $_FILES["afbeelding"]["name"];
 
                             $query = "UPDATE product 
-                                        SET Titel = ?,
-                                            Omschrijving = ?,
-                                            Categorie = ?,
-                                            Prijs = ?
-                                            Afbeelding = ?
+                                        SET `Titel` = ?,
+                                            `Omschrijving` = ?,
+                                            `Categorie` = ?,
+                                            `Prijs` = ?,
+                                            `Afbeelding` = ?,
                                             Leeftijd = ?
                                         WHERE product.ProductID = ?";
 
-
+                                
                             if($stmt = mysqli_prepare($conn, $query)){
                                 mysqli_stmt_bind_param($stmt, "sssisii", $titel, $omschrijving, $categorie, $prijs, $path, $leeftijd, $num);
-
+                                
                                 if(mysqli_stmt_execute($stmt)){
                                     echo "Product succesvol Gewijzigd.";
-                                    header("Location: product.php?num=$num");
+                                    header("Location: product.php?id=$num");
                                         mysqli_stmt_close($stmt);
                                         mysqli_close($conn);
                                     if(move_uploaded_file($_FILES["afbeelding"]["tmp_name"], "images/" . $_FILES["afbeelding"]["name"])){
