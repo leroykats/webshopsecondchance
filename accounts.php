@@ -7,9 +7,9 @@ include_once("Config/functions.php");
 
 if(isset($_POST["submit"])){
     if($_POST["acc_type"] == "Admin"){
-        $role =  0;
+        $role =  1;
     } elseif($_POST["acc_type"] == "picker"){
-        $role = 1;
+        $role = 2;
     } 
     if(isset($_POST["wachtwoord"]) && $wachtwoord = filter_input(INPUT_POST, "wachtwoord", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
         if(isset($_POST["naam"]) && $naam = filter_input(INPUT_POST, "naam", FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
