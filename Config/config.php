@@ -1,7 +1,7 @@
 <?php
     $dbConn = "localhost";
     $dbUser = "root";
-    $dbPassword = "root";
+    $dbPassword = "";
     $dbName = "secondchance";
     $conn = mysqli_connect($dbConn, $dbUser, $dbPassword, $dbName);
     if(!$conn)

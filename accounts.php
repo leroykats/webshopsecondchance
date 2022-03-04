@@ -73,51 +73,52 @@ if(isset($_POST["submit"])){
 <body>
 <main>
 
-<h1> maak een nieuw account aan </h1>
-<form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
+    <a href="wijzigAccount.php">
+        <button>Wijzig een account</button>
+    </a>
 
+    <h1>Maak een nieuw account aan</h1>
+
+<form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
 
     <label for="admin_acc"> Admin </label>
     <input type="radio" id="admin_acc" name="acc_type" value="Admin" checked >
     <label for="order_acc"> Order Picker </label>
     <input type="radio" id="order_acc" name="acc_type" value="picker">
 
-    <label for"wachtwoord">Wachtwoord</label>
+    <label for="wachtwoord">Wachtwoord</label>
     
     <input type="password" placeholder="Voer je nieuwe wachtwoord in" name="wachtwoord" id="wachtwoord" required>
 
-    <label for"naam">Naam</label>
+    <label for="naam">Naam</label>
     
     <input type="text" placeholder="Voer je naam in" name="naam" id="naam" required>
 
-    <label for"achternaam">Achternaam</label>
+    <label for="achternaam">Achternaam</label>
 
     <input type="text" placeholder="Voer je achternaarnaam in" name="achternaam" id="achternaam" required>
 
-    <label for"gdatum">Geboortedatum</label>   
+    <label for="gdatum">Geboortedatum</label>
     
     <input type="date"  name="gdatum" id="gdatum" required>
 
-    <label for"adres">Adres</label>
+    <label for="adres">Adres</label>
     
     <input type="text" placeholder="Voer je adres in" name="adres" id="adres" required>
 
-    <label for"postcode">Postcode</label>
+    <label for="postcode">Postcode</label>
     
     <input type="text" placeholder="Voer je postcode in" name="postcode" id="postcode" required>
 
-    <label for"plaats">Plaats</label>
+    <label for="plaats">Plaats</label>
     
     <input type="text" placeholder="Voer je woonplaats in" name="plaats" id="plaats" required>
 
-    <label for"email">E-mail</label>
+    <label for="email">E-mail</label>
     
     <input type="email" placeholder="Voer je E-mail in" name="email" id="email" required>
 
-
     <input type="submit" name="submit" value="maak account">
-
-</form> 
 
 <main>
 <footer>
