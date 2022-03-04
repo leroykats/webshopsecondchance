@@ -19,6 +19,7 @@
     } else{
         echo "<ul>";
          echo '<li><a href="login.php">Login</a></li>';
+         echo '<li><a href="registeren.php">Registreer</a></li>';
         echo "</ul>";
     }
 
