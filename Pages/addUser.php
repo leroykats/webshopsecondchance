@@ -45,3 +45,99 @@ if (isset($_POST['submit']))
     insertUser($conn, $email, $fname, $lname, $dob, $adres, $postcode, $plaats, $role);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<div class="users-title">
+    <h1>Nieuwe Gebruiker</h1>
+</div>
+<form action="addUser.php" method="post" class="form flex">
+    <div class="label-input flex">
+        <label for="email">Email: </label>
+        <div>
+            <?php if ((isset($_GET['error']) && ($_GET['error'] == "emptyField" || $_GET['error'] == "invalidEmail" || $_GET['error'] == "matchError"))): ?>
+                <div class="error">
+                    <?php echo getErrorMessages($_GET['error']); ?>
+                </div>
+            <?php endif; ?>
+            <input type="text" name="email" id="email">
+        </div>
+    </div>
+    <div class="label-input flex">
+        <label for="fName">Voornaam: </label>
+        <div>
+            <?php if ((isset($_GET['error']) && ($_GET['error'] == "emptyField" || $_GET['error'] == "matchError"))): ?>
+                <div class="error">
+                    <?php echo getErrorMessages($_GET['error']); ?>
+                </div>
+            <?php endif; ?>
+            <input type="text" name="fName" id="fName">
+        </div>
+    </div>
+    <div class="label-input flex">
+        <label for="lName">Achternaam: </label>
+        <div>
+            <?php if ((isset($_GET['error']) && ($_GET['error'] == "emptyField" || $_GET['error'] == "matchError"))): ?>
+                <div class="error">
+                    <?php echo getErrorMessages($_GET['error']); ?>
+                </div>
+            <?php endif; ?>
+            <input type="text" name="lName" id="lName">
+        </div>
+    </div>
+    <div class="label-input flex">
+        <label for="dob">Geboortedatum: </label>
+        <div>
+            <?php if ((isset($_GET['error']) && ($_GET['error'] == "emptyField" || $_GET['error'] == "matchError"))): ?>
+                <div class="error">
+                    <?php echo getErrorMessages($_GET['error']); ?>
+                </div>
+            <?php endif; ?>
+            <input type="text" name="dob" id="dob">
+        </div>
+    </div>
+    <div class="label-input flex">
+        <label for="adres">adres: </label>
+        <div>
+            <?php if ((isset($_GET['error']) && ($_GET['error'] == "emptyField" || $_GET['error'] == "matchError"))): ?>
+                <div class="error">
+                    <?php echo getErrorMessages($_GET['error']); ?>
+                </div>
+            <?php endif; ?>
+            <input type="text" name="adres" id="adres">
+        </div>
+    </div>
+    <div class="label-input flex">
+        <label for="postcode">Postcode: </label>
+        <div>
+            <?php if ((isset($_GET['error']) && ($_GET['error'] == "emptyField" || $_GET['error'] == "matchError"))): ?>
+                <div class="error">
+                    <?php echo getErrorMessages($_GET['error']); ?>
+                </div>
+            <?php endif; ?>
+            <input type="text" name="postcode" id="postcode">
+        </div>
+    </div>
+    <div class="label-input flex">
+        <label for="Plaats">Plaats: </label>
+        <div>
+            <?php if ((isset($_GET['error']) && ($_GET['error'] == "emptyField" || $_GET['error'] == "matchError"))): ?>
+                <div class="error">
+                    <?php echo getErrorMessages($_GET['error']); ?>
+                </div>
+            <?php endif; ?>
+            <input type="text" name="Plaats" id="Plaats">
+        </div>
+    </div>
+    <div class="label-input flex">
+        <label for="role">Rol: </label>
+        <div>
+            <select name="role" id="role">
+                <option value="Admin">Admin</option>
+                <option value="orderpicker">Orderpicker</option>
+                <option value="klant">Klant</option>
+            </select>
+        </div>
+    </div>
+    <input type="submit" name="submit" value="submit">
+</form>
+</html>
