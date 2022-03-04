@@ -3,14 +3,16 @@ session_start();
 include_once ("Config/config.php");
 include_once ("Config/functions.php");
 
+
 if(isset($_POST["submit"])){
+    $num = $_POST["id"];
     $titel = $_POST["titel"];
     $omschrijving = $_POST["omschrijving"];
     $categorie = $_POST["categorie"];
     $prijs = $_POST["prijs"];
     $leeftijd = $_POST["leeftijd"];
     
-
+    $num = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
     $titel = filter_input(INPUT_POST,'titel', FILTER_SANITIZE_SPECIAL_CHARS);
     $omschrijving = filter_input(INPUT_POST, 'omschrijving',FILTER_SANITIZE_SPECIAL_CHARS);
     $categorie = filter_input(INPUT_POST,'categorie', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -38,7 +40,7 @@ if(!empty($titel)){
                                             Prijs = ?
                                             Afbeelding = ?
                                             Leeftijd = ?
-                                        WHERE ProductID = ?";
+                                        WHERE product.ProductID = ?";
 
 
                             if($stmt = mysqli_prepare($conn, $query)){
@@ -107,11 +109,14 @@ $items = getCartProductInformation($conn, $nummer);
     <?php
     foreach($items as $product)
     ?>
+            <label for="id">productid</label>
+          <input type="text" name="id" value="<?=$product["ProductID"]?>" id="id" readonly>
+
            <label for="titel">Titel</label>
-          <input type="text" name="titel" value="<?=$product["Titel"]?>">
+          <input type="text" name="titel" value="<?=$product["Titel"]?>" id="titel">
             
             <label for="omschrijving">Omschrijving</label>
-            <input type="textarea" name="omschrijving" value="<?=$product["Omschrijving"]?>">
+            <input type="textarea" name="omschrijving" value="<?=$product["Omschrijving"]?>" id="omschrijving">
 
             <label for="categorie">Categorie</label>
             <select name="categorie" id="categorie">
@@ -123,13 +128,13 @@ $items = getCartProductInformation($conn, $nummer);
             </select>
             
             <label for="prijs">Prijs</label>
-            <input type="number" name="prijs" value="<?=$product["Prijs"]?>">
+            <input type="number" name="prijs" value="<?=$product["Prijs"]?>" id="prijs">
             
             <label for="afbeelding">Afbeelding(Verplicht)</label>
             <input type="file" name="afbeelding">
             
             <label for="leeftijd">Leeftijd</label>
-            <input type="number" name="leeftijd" value="<?=$product["Leeftijd"]?>"> 
+            <input type="number" name="leeftijd" value="<?=$product["Leeftijd"]?>" id="leeftijd"> 
             
             <input type="submit" name="submit" value="Product wijzigen">
         </form>
