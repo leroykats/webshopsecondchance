@@ -6,9 +6,9 @@ $num = $_GET['id'];
 $ticket = getOrderInformation($conn, $num);
 
 if(isset($_POST["AddToCart"])){
-    array_push($_SESSION['mandje'], $num);
+    array_push($_SESSION["mandje"], $num);
     echo "toevoegen gelukt";
-    //var_dump($_SESSION['mandje']);
+  
 }
 
 $userAge = getUserAge($_SESSION["gdatum"]);
@@ -35,7 +35,10 @@ $userAge = getUserAge($_SESSION["gdatum"]);
          echo "<br>";
          echo "<h3> &euro; ".$ticket["Prijs"]."</h3>";
          echo "<br>";
-         echo "<img src=".$ticket['File']." alt=".$ticket['Titel']."";
+         echo "<img src='" . $ticket["File"] . "'>";
+         echo "<br>";
+         echo "<br>";
+        
 
       
     
@@ -52,7 +55,11 @@ $userAge = getUserAge($_SESSION["gdatum"]);
     } else{
         echo "Login om te bestellen!";
     }
+    echo "<br>";
     
+    if($_SESSION["accountType"] == 0){
+        echo "<a href=\"wijzigproduct.php?num=$num\">Wijzig product</a>";
+    }
     
 ?>
 </main>
