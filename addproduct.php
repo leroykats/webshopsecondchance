@@ -52,6 +52,7 @@
 
         <?php include_once "Config/config.php";
             if(isset($_POST["submit"])){
+
                 $titel = $_POST["titel"];
                 $omschrijving = $_POST["omschrijving"];
                 $categorie = $_POST["categorie"];
@@ -102,15 +103,13 @@
                                         
                                     }
 
-                                    
-                                    
                                     mysqli_stmt_close($stmt);
                                     mysqli_close($conn);
                                 }else{
-                                    echo "Leeftijd vergeten!";
+                                    echo "Afbeelding vergeten!";
                                 }
                             }else{
-                                echo "Afbeelding vergeten!";
+                                echo "Leeftijd vergeten!";
                             }
                         }else{
                             echo "Prijs vergeten!";
